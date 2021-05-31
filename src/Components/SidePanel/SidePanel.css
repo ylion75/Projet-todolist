@@ -1,0 +1,42 @@
+.SidePanel-Container{
+    background-color: #F5F5F5;
+    height: 100%;
+    padding: 10px;
+}
+
+.SidePanelAddStepButton{
+    border:none;
+}
+
+.SidePanelButtons {
+    display:flex;
+}
+
+.SidePanelSaveButton {
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 126px;
+    height: 48px;
+    background-color: #FF7675;
+    color: white;
+    border:none;
+}
+
+.SidePanelCancelButton {
+    border-radius: 4px;
+    margin-top: 20px;
+    margin-left: 20px;
+    width: 126px;
+    height: 48px;
+    background-color: gray;
+    color: white;
+    border:none;
+}
+/*
+m-auto px-4 col-12 col-sm-10 col-lg-6
+
+SidePanelSaveButton
+mt-2 btn btn-primary d-block
+button button className="mt-2 btn btn-primary d-block"
+*/

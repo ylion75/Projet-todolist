@@ -1,0 +1,17 @@
+.HomePage-Container{
+    display:flex;
+    width:100%;
+    height:900px;
+}
+
+.HomePageLeftPanel{
+    flex: 1;
+}
+
+.HomePageMainPanel{
+    flex: 2;
+}
+
+.HomePageRightPanel{
+    flex: 1;
+}

@@ -1,0 +1,44 @@
+/*
+Pour les composants: est-ce qu'il faut créer un dossier avec tous les composants réutilisés plusieurs fois (genre les boutons)?
+Est-ce que je peux faire des composants eux-mêmes composés de composants ? 
+    
+Imports Boutons: ou mettre les imports normalement dans le header du HTML (https://www.w3schools.com/howto/howto_css_icon_buttons.asp)
+//webpack = bundler, peut être utilisé pour les imports CSS. 
++ question liée : utilisé des sources extérieurs pour les boutons (material UI, bootstrap) : une seule ou plusieurs ? 
+
+Autres questions : 
+- datepicker : pourquoi il n'enregistre pas la date + reconnait pas "date"
+- stratégie pour structurer et mettre en place CSS //  projet react : découper en composants mais difficile de se réperérer
+    - dans la page de la ou dans les composants ? les deux ?
+    - comment styliser mes pages. Les forms marchent de manière individuelle mais pas mis ensemble. 
+    - utiliser les modules CSS ? Styled components (et dans ce cas la du mal à voir comment mettre en place l'ensemble) ? CssInJs ?
+    - comment éviter les conflits et ne pas se perdre
+- pop-up panel : onClick sur List Item 
+- input field onClick
+- JS : utilisation export default function HomePage() vs const Homepage() avec un export à la fin 
+
+
+
+=> sortir le composant taskform dans HomePage
+
+//TODO
+- ListForm
+-> Faire en sorte que Nouvelle Liste fasse apparaître le panel de droite 
+-> Compteur de tâche dans chaque liste
+-> (Mail enregistré // handlers)
+
+- Form 
+-> Afficher les différentes tasks, triées par échéance (//date sns compare  Asc)
+-> Mettre le bouton pour supprimer le form
+    -> Alert : confirmation de suppression
+
+- Panel de droite
+-> Titre : affiché le nom de la liste en placeholder,
+-> Etapes : indiqué les différentes étapes
+-> Input nouvelle étape
+-> Echeance : react date
+-> Note 
+-> Enregistrer et annuler
+
+
+*/

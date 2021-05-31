@@ -1,0 +1,31 @@
+.loginForm-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 700px;
+
+}
+
+.form-login{
+    width: 350px;
+}
+
+.loginForm-text{
+    color: #FF7675;
+    text-align: center;
+}
+
+.loginForm-text-warning{
+    color: #D63031;
+    text-align: center;
+}
+
+input{
+    height: 48px;
+    width : 100%;
+    border-radius: 4px;
+}
+
+.loginForm-group{
+    width: 100%;
+}

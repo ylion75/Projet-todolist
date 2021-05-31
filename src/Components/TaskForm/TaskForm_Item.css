@@ -1,0 +1,23 @@
+/* order d-flex justify-content-between align-items-center p-2 m-2*/
+
+.TaskFormItem-Container{
+    padding:10px;
+    
+}
+
+.taskItem{
+    display:flex;
+    border:none;
+    width:100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.deleteIcon{
+    float:right;
+}
+
+
+.tastText{
+    text-decoration: line-through;
+}
