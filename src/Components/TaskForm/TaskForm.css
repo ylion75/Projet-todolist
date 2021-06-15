@@ -3,7 +3,26 @@
     padding:20px;
 }
 
-.TaskForm-Tasks{
-    
+.TaskForm-Items{
+    display:flex;
 }
 /*m-auto px-4 col-12 col-sm-10 col-lg-6*/
+
+/*
+.taskItem{
+    display:flex;
+    border:none;
+    width:100%;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.deleteIcon{
+    float:right;
+}
+
+
+.tastText{
+    text-decoration: line-through;
+}
+*/

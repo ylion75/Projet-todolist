@@ -18,8 +18,15 @@ Autres questions :
 - JS : utilisation export default function HomePage() vs const Homepage() avec un export à la fin 
 
 
-
 => sortir le composant taskform dans HomePage
+
+PB : 
+-> supprimer 
+-> difficulté avec les composants eux mêmes composés de composants (suppression de TaskForm_item)
+-> L'item de mon sidePanel ne change pas (lié au taskForm qui ne remonte pas le state ?)
+-> listForm (panel gauche), listArr not iterable ? OK
+-> nommage : label vs h5 ? 
+-> props vs React.useState(props) : marche dans certains et pas d'autres
 
 //TODO
 - ListForm
@@ -41,4 +48,17 @@ Autres questions :
 -> Enregistrer et annuler
 
 
+
+=>
+- faire un tableau qui stock toutes les listes
+- suppression : setLists n'est pas une fonction
+- comment faire 
+
+- ajout nouveaux éléments 
+- strike text onChecked
+
+
+a voir : 
+- selectedList : stocker l'index plutôt que la liste
+- index fournit avec la fonction map
 */

@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import * as React from "react"
 import {BrowserRouter as Router, Redirect, Route, Switch} from 'react-router-dom'
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import HomePage from './pages/HomePage'

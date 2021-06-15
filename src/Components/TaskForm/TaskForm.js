@@ -1,40 +1,76 @@
-import TaskForm_Item from './TaskForm_Item';
+import * as React from "react";
+import DeleteIcon from '@material-ui/icons/Delete'
+import Checkbox from '@material-ui/core/Checkbox'
 
-export default function TaskForm(props){
+export default function TaskForm(props){    
+    const {list, onSelectTask, onAddTask, onDeleteTask} = props;
+    const [newTaskLabel, setNewtaskLabel] = React.useState("");
 
-    const [dataArr, setDataArr] = useState([
-        {txt: "Créer un repository sur github", id: uuidv4()},
-        {txt: "Créer un repository sur github", id: uuidv4()},
-        {txt: "Créer un repository sur github", id: uuidv4()},
-        {txt: "Créer un repository sur github", id: uuidv4()},
+    const handleAddTask = () => {
+        onAddTask(newTaskLabel);
+        console.log(newTaskLabel);
+        setNewtaskLabel("");        
+    }
 
-    ])
-    
-    const deleteElement = id => {
-        const filteredState = dataArr.filter(item => {
-            return item.id !== id;
-        })
-        setDataArr(filteredState)
-    }    
+    //checkbox
+    const [checked, setChecked] = React.useState(false);
+    const handleChecked = (event) => {
+        setChecked(event.target.checked);
+        console.log("barrer le texte");
+        //document.getElementsByTagName("taskText").strike();
+    };
 
     return (
         <div className="TaskForm-Container">       
             <h3>Prochaines tâches</h3>
                 <ul className="TaskForm-Tasks">
-                    {dataArr.map(item => {
-                        return(                        
-                            <TaskForm_Item
-                            txt={item.txt}
-                            key={item.id}
-                            id={item.id}
-                            delFunc = {deleteElement}
-                            />
+                    {list.tasks.map((task, index) => {
+                        return(       
+                            <button className="TaskForm-Items" onClick={() => onSelectTask(index)}>                             
+                                <div class="taskCheckbox">
+                                    <Checkbox                        
+                                        taskChecked={checked}
+                                        onChange={handleChecked}
+                                        inputProps={{'aria-label': 'primary checkbox' }}
+                                    />
+                                </div>
+                                <div className="taskText">
+                                    {task.title}
+                                </div>
+                                <div className="deleteIcon">
+                                    <DeleteIcon onClick={() => onDeleteTask(task)}> 
+                                    </DeleteIcon>      
+                                </div> 
+                            </button>                            
                         )
                     })}
-                </ul>                          
+                </ul>
+            <div>
+                <input                     
+                    type="text" 
+                    name="newTask" 
+                    placeholder="Ajoutez une tâche à votre liste"  
+                    value={newTaskLabel}       
+                    onChange={(e)=> setNewtaskLabel(e.target.value)}          
+                />         
+                <button type="button" onClick={handleAddTask}>+</button>                          
+            </div>
         </div>
     )
 }
+
+
+
+
+/*
+TaskForm_Item
+<TaskForm_Item 
+                            onClick={() => onSelectTask(item)}
+                            txt={item.txt}
+                            id={item.id}
+                            delFunc = {deleteElement}
+                            /> 
+
 
 /*
 

@@ -1,80 +1,115 @@
-import {useState} from  'react'
-import {v4 as uuidv4} from 'uuid'
-import SidePanel_Step from './SidePanel_Step'
-import SidePanel_Deadline from './SidePanel_Deadline'
+import * as React from "react"
+import Checkbox from '@material-ui/core/Checkbox'
+import DeleteIcon from '@material-ui/icons/Delete'
+import DatePicker from "react-datepicker";
 import './SidePanel.css'
-import SidePanel_Title from './SidePanel_Title'
 import AddTwoToneIcon from '@material-ui/icons/AddTwoTone';
 
-export default function SidePanel(){    
-    const [dataArr, setDataArr] = useState([
-        {txt: "Aller sur Github", id: uuidv4()},
-        {txt: "Créer le repository", id: uuidv4()},
-    ])
-        
-    const[stateInput, setStateInput] = useState();
+export default function SidePanel(props){    
+    const {task, modifyTitle, onAddStep, onDeleteStep, hidePanel} = props;   
+    const [newStepLabel, setNewStepLabel] = React.useState("");
+    const [startDate, setStartDate] = React.useState(new Date());    
+    const [title, setTitle] = React.useState(task.title);
+    const [note, setNote] = React.useState(task.note);
 
-    const deleteElement = id => {
-        const filteredState = dataArr.filter(item => {
-            return item.id !== id;
-        })
-        setDataArr(filteredState)
-    }
+    const handleAddStep = () => {
+        onAddStep(newStepLabel);
+        setNewStepLabel("");
+    }  
 
-    const addTodo = e => {
-        e.preventDefault(); //permet de ne pas actualiser la page
-        const newArr = [...dataArr]
-
-        const newTodo = {};
-        newTodo.txt = stateInput;
-        newTodo.id = uuidv4;
-
-        newArr.push(newTodo);
-        setDataArr(newArr);
-        setStateInput('');
-    }
-
-    const linkedInput = e => {
-        setStateInput(e);
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        modifyTitle(title);
     }
 
     return (
-        <div className="SidePanel-Container">       
-            <SidePanel_Title/>
-            <h5>Etapes</h5>
-                <ul className="list-group">
-                    {dataArr.map(item => {
-                        return(
-                            <SidePanel_Step 
-                            txt={item.txt}
+        <div className="SidePanel-Container">  
+            <form onSubmit={handleSubmit}>
+                <div>   
+                    <label for="Title"> Titre </label>
+                    <input 
+                        defaultValue={task.title}
+                        onChange={(e)=> modifyTitle(e.target.value)}>
+                    </input>
+                </div> 
+                <div>            
+                    <ul className="list-group">
+                        {task.steps.map((item) => {
+                            return(
+                                <button> 
+                                    <div>
+                                        <Checkbox/>
+                                    </div>
+                                    <div className="stepTitle">
+                                        {item.title}
+                                    </div>
+                                    <div>
+                                        <DeleteIcon onClick={() => onDeleteStep(item)}>
+                                        </DeleteIcon> 
+                                    </div>
+                                </button>
+
+                            )
+                        })}
+                    </ul>
+                </div> 
+                <div>                
+                    <input 
+                        type="text"     
+                        name="newStep"
+                        className="form-control" 
+                        placeholder="Nouvelle étape"
+                        value={newStepLabel}
+                        onChange={(e)=> setNewStepLabel(e.target.value)}
+                    />
+                <button onClick={handleAddStep} className="SidePanelAddStepButton"><AddTwoToneIcon>Ajouter</AddTwoToneIcon></button>
+                </div>
+                <div>
+                    <label for="Note">Note</label>
+                    <input 
+                        type="text"
+                        value= {note}  > 
+                    </input>
+                </div>
+                <div>
+                    <label for="Date">Echéance</label>
+                    <DatePicker
+                        selected={startDate}
+                        //onSelect={handleDateSelect} //when day is clicked
+                        onChange={setStartDate}
+                    />
+                </div>
+                <div className="SidePanelButtons">
+                    <button className="SidePanelSaveButton">Enregistrer</button>
+                    <button onClick={hidePanel} className="SidePanelCancelButton">Annuler</button>
+                </div>
+            </form>
+        </div>   
+        
+    
+    )
+}
+
+/* 
+                               <SidePanel_Step 
+                            txt={item.title}
                             key={item.id}
                             id={item.id}
-                            delFunc = {deleteElement}
+                            onClick={()=> onDeleteStep(item)}
                             />
-                        )
-                    })}
-                </ul>
 
-                <form onSubmit={e => addTodo(e)} class="mb-3">
-                    <input 
-                    onInput={(e => linkedInput(e.target.value))}
-                    type="text" 
-                    className="form-control" 
-                    id="todo"
-                    placeholder="Nouvelle étape"
-                    />
-                <button className="SidePanelAddStepButton"><AddTwoToneIcon>Ajouter</AddTwoToneIcon></button>
-            </form>
+                
             
-            <SidePanel_Deadline/>
+            
             
             <h5>Note</h5>
             <input></input>
+
             <div className="SidePanelButtons">
                 <button className="SidePanelSaveButton">Enregistrer</button>
                 <button className="SidePanelCancelButton">Annuler</button>
             </div>
    
-        </div>
-    )
-}
+        
+
+*/

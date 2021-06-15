@@ -1,10 +1,9 @@
-
-import * as React from "react";
-import './TaskForm_Item.css'
-import DeleteIcon from '@material-ui/icons/Delete'
+import * as React from "react"
 import Checkbox from '@material-ui/core/Checkbox'
+import DeleteIcon from '@material-ui/icons/Delete'
 
 export default function TaskForm_Item(props) {
+
     const [checked, setChecked] = React.useState(false);
 
     const handleChange = (event) => {

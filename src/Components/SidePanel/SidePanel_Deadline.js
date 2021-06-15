@@ -3,8 +3,6 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
 export default function SidePanel_Deadline(props) {
-
-
     const [startDate, setStartDate] = useState(new Date());
 
     return (
