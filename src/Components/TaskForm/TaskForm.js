@@ -8,7 +8,6 @@ export default function TaskForm(props){
 
     const handleAddTask = () => {
         onAddTask(newTaskLabel);
-        console.log(newTaskLabel);
         setNewtaskLabel("");        
     }
 
